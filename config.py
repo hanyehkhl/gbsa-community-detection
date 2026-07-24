@@ -25,7 +25,7 @@ dataset_path = os.getenv("GBSA_DATASET_PATH", "data/karate.gml")
 # اولویت: GBSA_LLM_* (OS env) ← GAPGPT_* (.env) ← پیش‌فرض
 # اگر provider=ollama باشد، مقادیر GAPGPT از .env نادیده گرفته می‌شوند
 
-llm_provider = os.getenv("GBSA_LLM_PROVIDER") or os.getenv("GAPGPT_PROVIDER") or ""
+llm_provider = os.getenv("GBSA_LLM_PROVIDER") or os.getenv("GPT_PROVIDER") or ""
 
 if llm_provider == "ollama":
     # فقط GBSA_LLM_* (OS env) + پیش‌فرض‌های Ollama لوکال
@@ -35,9 +35,9 @@ if llm_provider == "ollama":
     llm_timeout = int(os.getenv("GBSA_LLM_REQUEST_TIMEOUT", "60"))
     llm_enabled = os.getenv("GBSA_LLM_ENABLED", "true").lower() in ("1", "true", "yes")
 else:
-    # GAPGPT (AvalAI / OpenAI-compatible): GBSA_LLM_* ← GAPGPT_* ← پیش‌فرض
-    llm_model = _pick("GBSA_LLM_MODEL", "GAPGPT_MODEL", default="deepseek-v4-flash")
-    llm_api_key = _pick("GBSA_LLM_API_KEY", "GAPGPT_API_KEY", default="")
-    llm_base_url = _pick("GBSA_LLM_BASE_URL", "GAPGPT_BASE_URL", default="")
+    # GAPGPT (  OpenAI-compatible): GBSA_LLM_* ← GAPGPT_* ← پیش‌فرض
+    llm_model = _pick("GBSA_LLM_MODEL", "GPT_MODEL", default="gpt-4o")
+    llm_api_key = _pick("GBSA_LLM_API_KEY", "GPT_API_KEY", default="")
+    llm_base_url = _pick("GBSA_LLM_BASE_URL", "GPT_BASE_URL", default="")
     llm_timeout = int(_pick("GBSA_LLM_REQUEST_TIMEOUT", "GAPGPT_REQUEST_TIMEOUT", default="60"))
-    llm_enabled = _pick("GBSA_LLM_ENABLED", "GAPGPT_ENABLED", default="true").lower() in ("1", "true", "yes")
+    llm_enabled = _pick("GBSA_LLM_ENABLED", "GPT_ENABLED", default="true").lower() in ("1", "true", "yes")
