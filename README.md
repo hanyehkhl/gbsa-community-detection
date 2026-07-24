@@ -110,12 +110,8 @@ uv sync
 فایل `.env` را ویرایش کنید:
 
 ```bash
-# LLM — AvalAI (پیش‌فرض) یا هر API سازگار با OpenAI
-GAPGPT_BASE_URL=https://api.avalai.ir/v1
-GAPGPT_API_KEY=aa-...          # کلید خودتان
-GAPGPT_MODEL=deepseek-v4-flash
-GAPGPT_REQUEST_TIMEOUT=60
-GAPGPT_ENABLED=true
+# LLM —  (پیش‌فرض) یا هر API سازگار با OpenAI
+
 
 # الگوریتم
 GBSA_POPULATION_SIZE=20
